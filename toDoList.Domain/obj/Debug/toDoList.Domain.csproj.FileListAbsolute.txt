@@ -1,0 +1,12 @@
+D:\Office\web app\ToDoListApp\toDoList.Domain\bin\Debug\toDoList.Domain.dll.config
+D:\Office\web app\ToDoListApp\toDoList.Domain\bin\Debug\toDoList.Domain.dll
+D:\Office\web app\ToDoListApp\toDoList.Domain\bin\Debug\toDoList.Domain.pdb
+D:\Office\web app\ToDoListApp\toDoList.Domain\bin\Debug\EntityFramework.dll
+D:\Office\web app\ToDoListApp\toDoList.Domain\bin\Debug\EntityFramework.SqlServer.dll
+D:\Office\web app\ToDoListApp\toDoList.Domain\bin\Debug\EntityFramework.xml
+D:\Office\web app\ToDoListApp\toDoList.Domain\bin\Debug\EntityFramework.SqlServer.xml
+D:\Office\web app\ToDoListApp\toDoList.Domain\obj\Debug\toDoList.Domain.csproj.AssemblyReference.cache
+D:\Office\web app\ToDoListApp\toDoList.Domain\obj\Debug\toDoList.Domain.csproj.CoreCompileInputs.cache
+D:\Office\web app\ToDoListApp\toDoList.Domain\obj\Debug\toDoList.Domain.csproj.CopyComplete
+D:\Office\web app\ToDoListApp\toDoList.Domain\obj\Debug\toDoList.Domain.dll
+D:\Office\web app\ToDoListApp\toDoList.Domain\obj\Debug\toDoList.Domain.pdb

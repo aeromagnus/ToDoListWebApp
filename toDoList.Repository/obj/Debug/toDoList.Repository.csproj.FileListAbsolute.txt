@@ -1,0 +1,6 @@
+D:\Office\web app\ToDoListApp\toDoList.Repository\bin\Debug\toDoList.Repository.dll
+D:\Office\web app\ToDoListApp\toDoList.Repository\bin\Debug\toDoList.Repository.pdb
+D:\Office\web app\ToDoListApp\toDoList.Repository\obj\Debug\toDoList.Repository.csproj.AssemblyReference.cache
+D:\Office\web app\ToDoListApp\toDoList.Repository\obj\Debug\toDoList.Repository.csproj.CoreCompileInputs.cache
+D:\Office\web app\ToDoListApp\toDoList.Repository\obj\Debug\toDoList.Repository.dll
+D:\Office\web app\ToDoListApp\toDoList.Repository\obj\Debug\toDoList.Repository.pdb
