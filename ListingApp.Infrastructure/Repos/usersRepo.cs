@@ -56,6 +56,7 @@ namespace ListingApp.Infrastructure.Repos
             {
                 users entity = new users();
                 entity = Mapper.convert(data);
+                entity.createdOn = DateTime.Now;
                 _context.users.Add(entity);
                 _context.SaveChanges();
             }
@@ -65,20 +66,57 @@ namespace ListingApp.Infrastructure.Repos
             }
         }
 
-        public void DeleteUsers(int userID)
+        public bool DeleteUsers(int userID)
         {
-            users Result = _context.users.Find(userID);
-            _context.users.Remove(Result);
+            try
+            {
+                var data = _context.users.Find(userID);
+                if (data == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    data.is_Deleted = true;
+                    _context.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex.InnerException;
+            }
         }
 
-        public void UpdateUsers(usersVM Record)
+        public void UpdateUsers(usersVM data)
         {
-
-            _context.Entry(Record).State = EntityState.Modified;
+            try 
+            {
+                var record = Mapper.convert(data);
+                var existing = _context.users.Find(data.usersID);
+                if (existing != null)
+                {
+                    _context.Entry(existing).State = EntityState.Detached;
+                    _context.users.Attach(record);
+                    _context.Entry(record).State = EntityState.Modified;
+                    _context.SaveChanges();
+                }
+            }
+            catch 
+            { 
+                throw null; 
+            }
         }
         public string checkpass(int userid,string pass)
         {
-            return _context.users.Where(x =>x.usersID == userid && x.password == pass).ToString();
+            try
+            {
+                return _context.users.Where(x => x.usersID == userid && x.password == pass).ToString();
+            }
+            catch(Exception ex)
+            {
+                throw ex.InnerException;
+            }
         }
         public void Save()
         {

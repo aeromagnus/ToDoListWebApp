@@ -68,12 +68,17 @@ namespace ListingApp.Infrastructure.Repos
             try
             {
                 var Result = _context.toDoList.Find(listID);
-                if (Result == null) 
-                { return false; }
-                Result.is_Deleted = true;
-                //_context.toDoList.Remove(Result);
-                _context.SaveChanges();
-                return true;
+                if (Result == null)
+                { 
+                    return false;
+                }
+                else
+                {
+                    Result.is_Deleted = true;
+                    //_context.toDoList.Remove(Result);
+                    _context.SaveChanges();
+                    return true;
+                }
             }
             catch /*(Exception ex)*/
             {

@@ -81,7 +81,8 @@ namespace ListingApp.Infrastructure
                     userName = entity.userName,
                     pass = Others.Hashing.hashPassword(entity.password),
                     hashedPass = Others.Hashing.hashPassword(entity.password),
-                    createdOn = entity.createdOn
+                    createdOn = entity.createdOn,
+                    is_Deleted= entity.is_Deleted
                 };
 
             }
@@ -98,6 +99,7 @@ namespace ListingApp.Infrastructure
                 vm.pass = Others.Hashing.hashPassword(entity.password);
                 vm.hashedPass = Others.Hashing.hashPassword(entity.password);
                 vm.createdOn = entity.createdOn;
+                vm.is_Deleted = entity.is_Deleted;
                 data.Add(vm);
             }
             return data;
@@ -119,7 +121,8 @@ namespace ListingApp.Infrastructure
                     userName = data.userName,
                     password = Others.Hashing.hashPassword(data.pass),
                     hashedPassword = Others.Hashing.hashPassword(data.pass),
-                    createdOn = data.createdOn
+                    createdOn = data.createdOn,
+                    is_Deleted = data.is_Deleted
                 };
             }
         }

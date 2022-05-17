@@ -1,0 +1,58 @@
+﻿@model ListingApp.BusinessObjects.usersVM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>usersVM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.userName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hashedPass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hashedPass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.createdOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.createdOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.is_Deleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_Deleted)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.usersID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

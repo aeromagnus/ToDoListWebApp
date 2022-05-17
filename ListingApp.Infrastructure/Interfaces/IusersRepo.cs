@@ -11,9 +11,9 @@ namespace ListingApp.Infrastructure.Interfaces
     {
         List<usersVM> GetUsers();
         usersVM GetUsersByID(int userId);
-        void InsertUsers(usersVM Record);
-        void DeleteUsers(int userID);
-        void UpdateUsers(usersVM Record);
+        void InsertUsers(usersVM data);
+        bool DeleteUsers(int userID);
+        void UpdateUsers(usersVM data);
         string checkpass(int userid,string pass);
         void Save();
     }

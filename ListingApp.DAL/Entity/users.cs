@@ -20,5 +20,6 @@ namespace ListingApp.DAL
         public string hashedPassword { get; set; }
 
         public DateTime? createdOn { get; set; }
+        public bool? is_Deleted { get; set; }
     }
 }
