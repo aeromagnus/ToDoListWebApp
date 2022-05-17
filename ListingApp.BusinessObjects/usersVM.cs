@@ -19,5 +19,7 @@ namespace ListingApp.BusinessObjects
         public string pass { get; set; }
         public string hashedPass { get; set; }
         public Nullable<System.DateTime> createdOn { get; set; }
+
+        public List<usersVM> listUsers { get; set; }
     }
 }

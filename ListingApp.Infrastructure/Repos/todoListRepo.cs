@@ -53,6 +53,7 @@ namespace ListingApp.Infrastructure.Repos
             {
                 toDoList entity = new toDoList();
                 entity = Mapper.convert(data);
+                entity.CreatedOn = DateTime.Now;
                  _context.toDoList.Add(entity);
                 _context.SaveChanges();
             }

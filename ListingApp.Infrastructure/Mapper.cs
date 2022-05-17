@@ -20,7 +20,7 @@ namespace ListingApp.Infrastructure
                 {
                     toDoListID = entity.toDoListID,
                     Name = entity.Name,
-                    CreatedOn = DateTime.Now,
+                    CreatedOn = entity.CreatedOn,
                     is_Deleted = Convert.ToBoolean(entity.is_Deleted)
                 };
                 return record;
@@ -81,7 +81,7 @@ namespace ListingApp.Infrastructure
                     userName = entity.userName,
                     pass = Others.Hashing.hashPassword(entity.password),
                     hashedPass = Others.Hashing.hashPassword(entity.password),
-                    createdOn = DateTime.UtcNow
+                    createdOn = entity.createdOn
                 };
 
             }
@@ -97,7 +97,7 @@ namespace ListingApp.Infrastructure
                 vm.userName = entity.userName;
                 vm.pass = Others.Hashing.hashPassword(entity.password);
                 vm.hashedPass = Others.Hashing.hashPassword(entity.password);
-                vm.createdOn = DateTime.UtcNow;
+                vm.createdOn = entity.createdOn;
                 data.Add(vm);
             }
             return data;

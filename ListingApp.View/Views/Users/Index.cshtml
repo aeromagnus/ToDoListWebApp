@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ListingApp.BusinessObjects.usersVM>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.userName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hashedPass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.createdOn)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.userName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hashedPass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.createdOn)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.usersID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.usersID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.usersID })
+        </td>
+    </tr>
+}
+
+</table>
