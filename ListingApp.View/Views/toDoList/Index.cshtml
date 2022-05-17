@@ -1,0 +1,53 @@
+﻿@model ListingApp.BusinessObjects.toDoListVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.toDoListID)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.is_Deleted)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.ListingData.Where(x=>x.is_Deleted==false).ToList())
+{
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.toDoListID)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedOn)
+        </td>
+        @*<td>
+            @(item.is_Deleted)
+        </td>*@
+        <td>
+      
+            @Html.ActionLink("Edit", "Edit", new { listId=item.toDoListID }) |
+            @Html.ActionLink("Details", "Details", new { listId = item.toDoListID }) |
+            @Html.ActionLink("Delete", "Delete", new { listId = item.toDoListID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,44 @@
+﻿@model ListingApp.BusinessObjects.toDoListVM
+
+<div>
+    <h4>Details Related to the List </h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.toDoListID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.toDoListID)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.is_Deleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_Deleted)
+        </dd>*@
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { listId = Model.toDoListID  }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
