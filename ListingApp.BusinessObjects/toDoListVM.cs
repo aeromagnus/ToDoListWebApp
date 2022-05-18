@@ -18,5 +18,7 @@ namespace ListingApp.BusinessObjects
         public bool is_Deleted { get; set; }
 
         public List<toDoListVM> ListingData { get; set; }
+
+        public virtual usersVM usersVM { get; set; }
     }
 }

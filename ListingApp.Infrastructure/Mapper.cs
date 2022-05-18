@@ -135,5 +135,121 @@ namespace ListingApp.Infrastructure
             return Result;
         }
         #endregion
+
+        #region Category
+
+        public static CategoryVM convert(Category entity)
+        {
+            if (entity == null)
+            {
+                    return null; 
+            }
+            else
+            {
+                return new CategoryVM()
+                {
+                    CategoryID = entity.CategoryID,
+                    Name = entity.Name,
+                    created_On = entity.created_On
+                };
+
+            }
+        }
+        public static Category convert(CategoryVM data)
+        {
+            if (data == null)
+            {
+                return null;
+            }
+            else
+            {
+                return new Category()
+                {
+                    CategoryID = data.CategoryID,
+                    Name = data.Name,
+                    created_On = data.created_On
+                };
+
+            }
+        }
+
+        public static List<CategoryVM> convert(List<Category> entities)
+        {
+            List<CategoryVM> data = new List<CategoryVM>();
+            foreach(var entity in entities)
+            {
+                data.Add(convert(entity));
+            }
+            return data;
+        }
+        public static List<Category> convert(List<CategoryVM> data)
+        {
+            List<Category> entity = new List<Category>();
+            foreach (var vm in data)
+            {
+                entity.Add(convert(vm));
+            }
+            return entity;
+        }
+        #endregion
+
+        #region USERS_ROLE
+
+        public static USERS_ROLEVM convert(USERS_ROLE entity)
+        {
+            if (entity == null)
+            {
+                return null;
+            }
+            else
+            {
+                return new USERS_ROLEVM()
+                {
+                    USERS_ROLEID = entity.USERS_ROLEID,
+                    Name = entity.Name,
+                    Description = entity.Descpt,
+                    created_On = entity.created_On
+                };
+
+            }
+        }
+        public static USERS_ROLE convert(USERS_ROLEVM data)
+        {
+            if (data == null)
+            {
+                return null;
+            }
+            else
+            {
+                return new USERS_ROLE()
+                {
+                    USERS_ROLEID = data.USERS_ROLEID,
+                    Name = data.Name,
+                    Descpt = data.Description,
+                    created_On = data.created_On
+                };
+
+            }
+        }
+
+        public static List<USERS_ROLEVM> convert(List<USERS_ROLE> entities)
+        {
+            List<USERS_ROLEVM> data = new List<USERS_ROLEVM>();
+            foreach (var entity in entities)
+            {
+                data.Add(convert(entity));
+            }
+            return data;
+        }
+        public static List<USERS_ROLE> convert(List<USERS_ROLEVM> data)
+        {
+            List<USERS_ROLE> entity = new List<USERS_ROLE>();
+            foreach (var vm in data)
+            {
+                entity.Add(convert(vm));
+            }
+            return entity;
+        }
+        #endregion
     }
 }

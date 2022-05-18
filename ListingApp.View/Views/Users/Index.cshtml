@@ -1,0 +1,85 @@
+﻿@model ListingApp.BusinessObjects.usersVM
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+
+@if (TempData["success"] != null)
+{
+    <div id="infoValidationSummary" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title"><b>Warning</b></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        @TempData["message"]
+                    </div>
+                </div>
+                <div class="modal-footer center-block">
+                    <button type="button" class="btn btn-primary btn-sm text-center" data-dismiss="modal">OK</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.userName)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.pass)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.createdOn)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.is_Deleted)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.listUsers)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.userName)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.pass)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.createdOn)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.is_Deleted)
+                </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { userId = item.usersID }) |
+                @Html.ActionLink("Details", "Details", new { userId = item.usersID }) |
+                @Html.ActionLink("Delete", "Delete", new { userId = item.usersID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<script type="text/javascript">
+    $document.ready(function () {
+        $('#edit_success').click(function () {
+
+        })
+    });
+    $('#infoValidationSummary').modal('show')
+</script>

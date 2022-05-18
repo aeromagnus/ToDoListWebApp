@@ -54,9 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\Category.cs" />
-    <Compile Include="Entity\crudContext.cs" />
+    <Compile Include="crudContext.cs" />
     <Compile Include="Entity\toDoList.cs" />
     <Compile Include="Entity\users.cs" />
+    <Compile Include="Entity\USERS_ROLE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

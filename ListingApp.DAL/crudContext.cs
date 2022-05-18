@@ -15,6 +15,7 @@ namespace ListingApp.DAL.Entity
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<toDoList> toDoList { get; set; }
         public virtual DbSet<users> users { get; set; }
+        public virtual DbSet<USERS_ROLE> USERS_ROLE { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -33,8 +34,24 @@ namespace ListingApp.DAL.Entity
             modelBuilder.Entity<users>()
                 .Property(e => e.password)
                 .IsUnicode(false);
-        }
 
-        public System.Data.Entity.DbSet<ListingApp.BusinessObjects.usersVM> usersVMs { get; set; }
+            modelBuilder.Entity<users>()
+                .HasMany(e => e.toDoList)
+                .WithRequired(e => e.users)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<USERS_ROLE>()
+                .Property(e => e.Name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<USERS_ROLE>()
+                .Property(e => e.Descpt)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<USERS_ROLE>()
+                .HasMany(e => e.users)
+                .WithOptional(e => e.USERS_ROLE)
+                .HasForeignKey(e => e.USER_ROLEID);
+        }
     }
 }

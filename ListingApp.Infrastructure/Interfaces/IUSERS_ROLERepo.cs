@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace ListingApp.Infrastructure.Interfaces
 {
-    public interface ICategoryRepo:IDisposable
+    public interface IUSERS_ROLERepo
     {
-        string Insert(CategoryVM data);
-        void Update(CategoryVM data);
+        string Insert(USERS_ROLEVM data);
+        void Update(USERS_ROLEVM data);
         bool Delete(int catID);
-        List<CategoryVM> GetAll();
-        CategoryVM GetByID(int catID);
+        List<USERS_ROLEVM> GetAll();
+        USERS_ROLEVM GetByID(int catID);
     }
+
 }

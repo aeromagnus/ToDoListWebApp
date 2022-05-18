@@ -55,23 +55,23 @@ namespace ListingApp.Infrastructure.Repos
             try
             {
                 users entity = new users();
-                //var exisiting = _context.users.Where(x=>x.userName == data.userName).FirstOrDefault();
-                //if (exisiting == null)
-                //{
+                var exisiting = _context.users.Where(x => x.userName == data.userName).FirstOrDefault();
+                if (exisiting == null)
+                {
                     entity = Mapper.convert(data);
                     entity.createdOn = DateTime.Now;
                     entity.is_Deleted = false;
                     _context.users.Add(entity);
                     _context.SaveChanges();
                     return "Success";
-                //}
-                //else
-                //{
-                //    var message = "Couldnot be added due to the existing user" + data.userName;
-                //    return message;
-                //}
-          
             }
+                else
+            {
+                var message = "Couldnot be added due to the existing user" + data.userName;
+                return message;
+            }
+
+        }
             catch (Exception)
             {
                 //throw ex.InnerException;
@@ -107,7 +107,11 @@ namespace ListingApp.Infrastructure.Repos
             {
                 var record = Mapper.convert(data);
                 var existing = _context.users.Find(data.usersID);
-                if (existing != null)
+                if (existing == null)
+                {
+                    throw null;
+                }
+                else
                 {
                     _context.Entry(existing).State = EntityState.Detached;
                     _context.users.Attach(record);

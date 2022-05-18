@@ -104,8 +104,11 @@
     <Compile Include="Interfaces\ItodoListRepo.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Interfaces\IusersRepo.cs" />
+    <Compile Include="Interfaces\IUSERS_ROLERepo.cs" />
     <Compile Include="Mapper.cs" />
+    <Compile Include="Repos\CategoryRepo.cs" />
     <Compile Include="Repos\LoginRepo.cs" />
+    <Compile Include="Repos\USERS_ROLERepo.cs" />
     <Compile Include="Service\Hashing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repos\todoListRepo.cs" />

@@ -23,7 +23,9 @@ namespace ListingApp.BusinessObjects
         //public string hashedPass { get; set; }
         public Nullable<System.DateTime> createdOn { get; set; }
         public bool? is_Deleted { get; set; }
+        public virtual USERS_ROLEVM USERS_ROLEVM { get; set; }
 
+        public virtual ICollection<toDoListVM> toDoListVM { get; set; }
         public List<usersVM> listUsers { get; set; }
     }
 }

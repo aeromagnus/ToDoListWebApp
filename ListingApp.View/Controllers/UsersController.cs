@@ -41,21 +41,21 @@ namespace ListingApp.View.Controllers
         {
             try
             {
-                var result = _unitOfWork.usersRepo.checkusername(data.userName);
+                //var result = _unitOfWork.usersRepo.checkusername(data.userName);
                 if (ModelState.IsValid)
                 {
-                    if (result == null)
-                    {
+                    //if (result == null)
+                    //{
                         _unitOfWork.usersRepo.InsertUsers(data);
                         _unitOfWork.Save();
                         return RedirectToAction("Index");
 
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("userName", "Cannot be added as this username already exists");
+                    //}
+                    //else
+                    //{
+                    //    ModelState.AddModelError("userName", "Cannot be added as this username already exists");
 
-                    }
+                    //}
                 }
             }
             catch (/*DataException*/ Exception ex)
@@ -65,11 +65,11 @@ namespace ListingApp.View.Controllers
             }
             return View(data);
         }
-        public ActionResult Details(int id)
+        public ActionResult Details(int userId)
         {
             try
             {
-                var data = _unitOfWork.usersRepo.GetUsersByID(id);
+                var data = _unitOfWork.usersRepo.GetUsersByID(userId);
                 return View(data);
             }
             catch (Exception ex)
@@ -79,11 +79,11 @@ namespace ListingApp.View.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int userId)
         {
             try
             {
-                usersVM list = _unitOfWork.usersRepo.GetUsersByID(id);
+                usersVM list = _unitOfWork.usersRepo.GetUsersByID(userId);
                 return View(list);
             }
             catch (Exception ex)
@@ -93,7 +93,7 @@ namespace ListingApp.View.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "userID,userName, pass,createdOn, is_Deleted")] usersVM _user)
+        public ActionResult Edit([Bind(Include = "usersID,userName, pass,createdOn, is_Deleted")] usersVM _user)
         {
             try
             {
@@ -101,6 +101,7 @@ namespace ListingApp.View.Controllers
                 {
                     _unitOfWork.usersRepo.UpdateUsers(_user);
                     _unitOfWork.Save();
+                    TempData["success"] = "Updated Successfully";
                     return RedirectToAction("Index");
                 }
             }
@@ -112,17 +113,17 @@ namespace ListingApp.View.Controllers
             return View(_user);
         }
 
-        public ActionResult Delete(int listId)
+        public ActionResult Delete(int userId)
         {
-            usersVM list = _unitOfWork.usersRepo.GetUsersByID(listId);
+            usersVM list = _unitOfWork.usersRepo.GetUsersByID(userId);
             return View(list);
         }
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult ConfirmDeleted(int listId)
+        public ActionResult ConfirmDeleted(int userId)
         {
-            usersVM list = _unitOfWork.usersRepo.GetUsersByID(listId);
-            _unitOfWork.usersRepo.DeleteUsers(listId);
+            usersVM list = _unitOfWork.usersRepo.GetUsersByID(userId);
+            _unitOfWork.usersRepo.DeleteUsers(userId);
             _unitOfWork.Save();
             return RedirectToAction("Index");
 

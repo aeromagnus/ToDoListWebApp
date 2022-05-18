@@ -14,8 +14,14 @@ namespace ListingApp.DAL.Entity
         [StringLength(200)]
         public string Name { get; set; }
 
+        public int usersID { get; set; }
+
         public DateTime? CreatedOn { get; set; }
 
-        public bool? is_Deleted { get; set; }
+        public DateTime? modified_On { get; set; }
+
+        public bool is_Deleted { get; set; }
+
+        public virtual users users { get; set; }
     }
 }
