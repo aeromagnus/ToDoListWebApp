@@ -10,6 +10,7 @@ namespace ListingApp.Infrastructure.Interfaces
     {
         IusersRepo usersRepo { get; }
         ItodoListRepo toDoListRepo { get; }
+        ILoginRepo loginRepo { get; }
         void Save();
     }
 }

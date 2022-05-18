@@ -16,7 +16,7 @@ namespace ListingApp.View
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "toDoList", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Users", action = "Users", id = UrlParameter.Optional }
             );
         }
     }

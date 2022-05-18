@@ -1,5 +1,5 @@
 ﻿using ListingApp.BusinessObjects;
-using ListingApp.DAL;
+using ListingApp.DAL.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -80,7 +80,6 @@ namespace ListingApp.Infrastructure
                     usersID = entity.usersID,
                     userName = entity.userName,
                     pass = Others.Hashing.hashPassword(entity.password),
-                    hashedPass = Others.Hashing.hashPassword(entity.password),
                     createdOn = entity.createdOn,
                     is_Deleted= entity.is_Deleted
                 };
@@ -97,7 +96,7 @@ namespace ListingApp.Infrastructure
                 vm.usersID = entity.usersID;
                 vm.userName = entity.userName;
                 vm.pass = Others.Hashing.hashPassword(entity.password);
-                vm.hashedPass = Others.Hashing.hashPassword(entity.password);
+                //vm.hashedPass = Others.Hashing.hashPassword(entity.password);
                 vm.createdOn = entity.createdOn;
                 vm.is_Deleted = entity.is_Deleted;
                 data.Add(vm);
@@ -120,7 +119,7 @@ namespace ListingApp.Infrastructure
                     usersID = data.usersID,
                     userName = data.userName,
                     password = Others.Hashing.hashPassword(data.pass),
-                    hashedPassword = Others.Hashing.hashPassword(data.pass),
+                    //hashedPassword = Others.Hashing.hashPassword(data.pass),
                     createdOn = data.createdOn,
                     is_Deleted = data.is_Deleted
                 };

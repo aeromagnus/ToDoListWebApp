@@ -1,4 +1,4 @@
-namespace ListingApp.DAL
+namespace ListingApp.DAL.Entity
 {
     using System;
     using System.Collections.Generic;
@@ -16,10 +16,8 @@ namespace ListingApp.DAL
         [StringLength(64)]
         public string password { get; set; }
 
-        [StringLength(128)]
-        public string hashedPassword { get; set; }
-
         public DateTime? createdOn { get; set; }
+
         public bool? is_Deleted { get; set; }
     }
 }

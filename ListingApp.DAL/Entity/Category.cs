@@ -6,16 +6,14 @@ namespace ListingApp.DAL.Entity
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("toDoList")]
-    public partial class toDoList
+    [Table("Category")]
+    public partial class Category
     {
-        public int toDoListID { get; set; }
+        public int CategoryID { get; set; }
 
-        [StringLength(200)]
+        [StringLength(40)]
         public string Name { get; set; }
 
-        public DateTime? CreatedOn { get; set; }
-
-        public bool? is_Deleted { get; set; }
+        public DateTime? created_On { get; set; }
     }
 }

@@ -48,6 +48,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="toDoListVM.cs" />
     <Compile Include="usersVM.cs" />

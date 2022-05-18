@@ -1,4 +1,4 @@
-﻿using ListingApp.DAL;
+﻿using ListingApp.DAL.Entity;
 using ListingApp.Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -13,6 +13,7 @@ namespace ListingApp.Infrastructure.Repos
         private readonly crudContext _context;
         private IusersRepo _usersRepo;
         private ItodoListRepo _listRepo;
+        private ILoginRepo _loginRepo;
         public UnitOfWork()
         {
             _context = new crudContext();
@@ -44,6 +45,17 @@ namespace ListingApp.Infrastructure.Repos
                     this._listRepo = new todoListRepo(_context);
                 }
                 return _listRepo;
+            }
+        }
+        public ILoginRepo loginRepo
+        {
+            get
+            {
+                if (this._loginRepo == null)
+                {
+                    this._loginRepo = new LoginRepo(_context);
+                }
+                return _loginRepo;
             }
         }
         public void Save()

@@ -53,10 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="crudContext.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entity\Category.cs" />
+    <Compile Include="Entity\crudContext.cs" />
     <Compile Include="Entity\toDoList.cs" />
     <Compile Include="Entity\users.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

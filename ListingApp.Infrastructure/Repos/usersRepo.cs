@@ -1,5 +1,5 @@
 ﻿using ListingApp.BusinessObjects;
-using ListingApp.DAL;
+using ListingApp.DAL.Entity;
 using ListingApp.Infrastructure.Interfaces;
 using ListingApp.Infrastructure;
 using System;
@@ -27,7 +27,7 @@ namespace ListingApp.Infrastructure.Repos
         }
     
         public List<usersVM> GetUsers()
-        {
+         {
             try
             {
                 List<usersVM> list = new List<usersVM>();
@@ -50,19 +50,32 @@ namespace ListingApp.Infrastructure.Repos
             }
         }
 
-        public void InsertUsers(usersVM data)
+        public string InsertUsers(usersVM data)
         {
             try
             {
                 users entity = new users();
-                entity = Mapper.convert(data);
-                entity.createdOn = DateTime.Now;
-                _context.users.Add(entity);
-                _context.SaveChanges();
+                //var exisiting = _context.users.Where(x=>x.userName == data.userName).FirstOrDefault();
+                //if (exisiting == null)
+                //{
+                    entity = Mapper.convert(data);
+                    entity.createdOn = DateTime.Now;
+                    entity.is_Deleted = false;
+                    _context.users.Add(entity);
+                    _context.SaveChanges();
+                    return "Success";
+                //}
+                //else
+                //{
+                //    var message = "Couldnot be added due to the existing user" + data.userName;
+                //    return message;
+                //}
+          
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex.InnerException;
+                //throw ex.InnerException;
+                throw new Exception("Cannot handled simple CRUD Operation!");
             }
         }
 
@@ -107,13 +120,24 @@ namespace ListingApp.Infrastructure.Repos
                 throw null; 
             }
         }
-        public string checkpass(int userid,string pass)
+        public string checkpass(string pass)
         {
             try
             {
-                return _context.users.Where(x => x.usersID == userid && x.password == pass).ToString();
+                return _context.users.Where(x => x.password == pass).ToString();
             }
             catch(Exception ex)
+            {
+                throw ex.InnerException;
+            }
+        }
+        public string checkusername(string username)
+        {
+            try
+            {
+                return _context.users.Where(fucker => fucker.userName == username).ToString();
+            }
+            catch (Exception ex)
             {
                 throw ex.InnerException;
             }

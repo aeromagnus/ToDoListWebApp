@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -16,8 +17,8 @@ namespace ListingApp.View.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            try 
-            { 
+            try
+            {
                 usersVM user = new usersVM();
                 user.listUsers = _unitOfWork.usersRepo.GetUsers();
                 return View(user);
@@ -36,20 +37,31 @@ namespace ListingApp.View.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "userName, password")] usersVM data)
+        public ActionResult Create([Bind(Include = "userName, pass")] usersVM data)
         {
             try
             {
+                var result = _unitOfWork.usersRepo.checkusername(data.userName);
                 if (ModelState.IsValid)
                 {
-                    _unitOfWork.usersRepo.InsertUsers(data);
-                    _unitOfWork.Save();
-                    return RedirectToAction("Index");
+                    if (result == null)
+                    {
+                        _unitOfWork.usersRepo.InsertUsers(data);
+                        _unitOfWork.Save();
+                        return RedirectToAction("Index");
+
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("userName", "Cannot be added as this username already exists");
+
+                    }
                 }
             }
-            catch (DataException)
+            catch (/*DataException*/ Exception ex)
             {
-                ModelState.AddModelError("","users cannot be created. So, Fucker Refresh this page or do nothing MF");
+                throw ex.InnerException;
+                //ModelState.AddModelError("","users cannot be created. So, Fucker Refresh this page or do nothing MF");
             }
             return View(data);
         }
@@ -80,8 +92,8 @@ namespace ListingApp.View.Controllers
             }
         }
         [HttpPost]
-
-        public ActionResult Edit([Bind(Include = "userID,userName, password,createdOn, is_Deleted")] usersVM _user)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "userID,userName, pass,createdOn, is_Deleted")] usersVM _user)
         {
             try
             {
@@ -115,5 +127,34 @@ namespace ListingApp.View.Controllers
             return RedirectToAction("Index");
 
         }
+        
+        //[HttpPost]
+        //public ActionResult Login(usersVM data)
+        //{
+        //    try
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            var _username = _unitOfWork.usersRepo.checkusername(data.userName);
+        //            var _password = _unitOfWork.usersRepo.checkpass(data.pass);
+        //            if (_username == data.userName && _password == data.pass)
+        //            {
+        //                TempData["success"] = "Successfully Added";
+        //                return RedirectToAction("Index", "todoList");
+        //            }
+        //            else
+        //            {
+        //                ModelState.AddModelError("", "cannot be Logged in");
+        //                return View("Login");
+        //            }
+        //        }
+        //    }
+        //    catch (DataException)
+        //    {
+        //        ModelState.AddModelError("", "cannot be Logged in");
+        //    }
+        //    return RedirectToAction("Login", "Users");
+        //}
+
     }
 }

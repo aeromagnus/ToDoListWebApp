@@ -6,6 +6,7 @@ namespace ListingApp.BusinessObjects
 {
     public class toDoListVM
     {
+        [Key]
         public int toDoListID { get; set; }
         [Required]
         //[RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]

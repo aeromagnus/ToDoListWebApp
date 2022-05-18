@@ -19,8 +19,8 @@ namespace ListingApp.BusinessObjects
         [StringLength(20)]
         [Display(Name = "Password")]
         public string pass { get; set; }
-        [Display(Name = "Re-Enter Password")]
-        public string hashedPass { get; set; }
+        //[Display(Name = "Re-Enter Password")]
+        //public string hashedPass { get; set; }
         public Nullable<System.DateTime> createdOn { get; set; }
         public bool? is_Deleted { get; set; }
 

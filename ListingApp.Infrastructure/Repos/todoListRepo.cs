@@ -1,4 +1,4 @@
-﻿using ListingApp.DAL;
+﻿using ListingApp.DAL.Entity;
 using ListingApp.Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
