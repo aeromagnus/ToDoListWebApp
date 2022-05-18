@@ -3,6 +3,7 @@ using ListingApp.DAL.Entity;
 using ListingApp.Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,12 +19,17 @@ namespace ListingApp.Infrastructure.Repos
         }
         public string Insert(CategoryVM data)
         {
-            try 
+            try
             {
                 var result = new Category();
                 result = Mapper.convert(data);
-                result = _context.Category.Add(data);
-
+                _context.Category.Add(result);
+                _context.SaveChanges();
+                return "Successfully Added Category to the db";
+            }
+            catch (Exception ex)
+            {
+                throw ex.InnerException;    
             }
         }
     }
